@@ -1,6 +1,196 @@
 /******* Change Box Model ***************/
+
 *,
 *:before,
 *:after {
   box-sizing: border-box;
+}
+
+:root {
+  --primary-color: white;
+  --secondary-color: #2c3e50;
+  --light-color: #0dc4e1;
+  --dark-color: black;
+  --transparent-box: rgba(255, 255, 255, 0.85);
+  --heading-font: 'Montserrat', sans-serif;
+  --body-font: 'Open Sans', sans-serif;
+}
+
+h1, h2{
+  color: var(--dark-color);
+  font-family: var(--heading-font);
+  font-weight: 700;
+}
+body {
+  line-height: 1.6;
+  color: var(--dark-color);
+  background-color: var(--primary-color);
+  font-family: var(--body-font);
+  font-weight: 400;
+}
+
+#wrapper {
+  max-width: 100%;
+  overflow-x: hidden;
+  padding: 0 1rem;
+  background-color: var(--primary-color);
+  border: 8px solid var(--light-color);
+  border-radius: 20px;
+  max-width: 800px;
+}
+
+/* Header Styles */
+#top-header {
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.siteName a {
+  color: var(--secondary-color); /*CSE Motors Title*/
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+#tools a {
+  color: var(--secondary-color); /*My account button*/
+  text-decoration: none;
+}
+/* Navigation */
+
+nav ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  background-color: var(--secondary-color); 
+  padding: 0.5rem;
+}
+nav li {
+  margin-right: 1rem;
+}
+
+nav li a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+/* Main Content */
+.hero {
+  margin: 2rem 0;
+  position: relative;
+  height: auto;
+  min-height: 400px;
+  overflow: hidden;
+  max-width: 850px;
+}
+.hero-image {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-left: 2rem;
+}
+.featured-vehicle {
+  color: var(--light-color);
+  background-color: var(--transparent-box);
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 300px;
+  max-height: 250px;
+  height: auto;
+  margin-top: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.featured-vehicle h2 {
+  margin-bottom: 1rem;
+}
+.featured-vehicle img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+}
+.reviews {
+  margin: 2rem 0;
+}
+.review-list {
+  list-style-position: inside;
+  padding-left: 1rem;
+}
+.upgrades {
+  margin: 2rem 0;
+}
+.upgrade-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.upgrade-item {
+  background-color: var(--light-color); 
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  border-color: var(--secondary-color);
+  
+}
+/* Footer */
+footer {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  text-align: left;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+/* Medium/Large Screens (single media query) */
+@media screen and (min-width: 768px) {
+  #wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  main{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+    "hero hero"
+    "upgrades reviews";
+    margin: 1rem;
+    gap: 1rem;
+  }
+
+  .hero{
+    grid-column: span 2;
+    grid-area: hero;
+  }
+  .reviews{
+    grid-area: reviews;
+    gap: 1rem;
+    padding: 1rem;
+    margin: 1rem;
+  }
+  .reviews li{
+    margin-bottom: 1rem;
+  }
+  .upgrades{
+    grid-area: upgrades;
+  }
+
+  body{
+    background-image: url('/images/site/checkerboard.jpg');
+    background-attachment: fixed;
+    background-size: auto;
+  }
+
+  .upgrade-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
 }
