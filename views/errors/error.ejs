@@ -1,0 +1,12 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+  <% } else { %>
+    <h1>Error</h1>
+  <% } %>
+  
+  <p><%- message %></p>
+  
+  <div style="margin-top: 2rem;">
+    <p>Oops! Something went wrong... But here's a cat to make it better 😸</p>
+    <img src="https://http.cat/500" alt="Funny HTTP cat" style="max-width: 400px; width: 100%; border-radius: 8px;">
+  </div>
