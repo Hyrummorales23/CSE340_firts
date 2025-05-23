@@ -1,14 +1,25 @@
-<% if (title) { %>
-    <h1><%= title %></h1>
+<section>
+  <% if (title) { %>
+    <h1 class="error-title"><%= title %></h1>
   <% } else { %>
-    <h1>Error</h1>
+    <h1 class="error-title">Error</h1>
   <% } %>
   
-  <p><%- message %></p>
-  
-  <div style="margin-top: 2rem;">
-    <p>Oops! Something went wrong... But here's a cat to make it better 😸</p>
-    <img src="https://http.cat/500" alt="Funny HTTP cat" style="max-width: 400px; width: 100%; border-radius: 8px;">
+  <div class="error-container">
+    <div class="error-content">
+      <p class="error-message"><%- message %></p>
+      <% if (title === 500 || title === 'Server Error') { %>
+        <div class="roadtrip-message">
+          <p>Don't worry about this little detour...</p>
+          <p>Why not plan your next road trip instead?</p>
+        </div>
+      <% } else if (title === 404) { %>
+        <div class="roadtrip-message">
+          <p>You've taken a wrong turn...</p>
+          <p>Let's get you back on the road to great deals!</p>
+        </div>
+      <% } %>
+    </div>
   </div>
-
+</section>
   

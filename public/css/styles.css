@@ -240,6 +240,44 @@ footer {
   font-size: 1.2rem;
   color: #666;
 }
+.error-container {
+  position: relative;
+  min-height: 60vh;
+  background-image: url('/images/site/road-landscape.webp');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.error-content {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 1.5rem;
+  border-radius: 8px;
+  max-width: 90%;
+  text-align: center;
+}
+
+.error-title {
+  color: var(--secondary-color);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.error-message {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.roadtrip-message {
+  font-style: italic;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
 
 /* Medium/Large Screens (single media query) */
 @media screen and (min-width: 768px) {
@@ -309,5 +347,22 @@ footer {
   }
   #inv-display li{
     min-width: 100%;
+  }
+  .error-container {
+    min-height: 70vh;
+    width: clamp(100%,80vw,1000px);
+  }
+
+  .error-content {
+    padding: 2rem;
+    max-width: 600px;
+  }
+
+  .error-title {
+    font-size: 2.5rem;
+  }
+
+  .roadtrip-message {
+    font-size: 1.2rem;
   }
 }
