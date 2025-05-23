@@ -1,10 +1,12 @@
-<%# This function will dinamicaly create an h1 matching the Title of the view %>
+<main class="classification-main">
+  <%# This function will dinamicaly create an h1 matching the Title of the view %>
 <% if (title) { %>
-    <h1><%= title %></h1>
-    <% } else {
-      res.redirect('/')
-    } %>
+  <h1><%= title %></h1>
+  <% } else {
+    res.redirect('/')
+  } %>
 
 <%# messages() %>
 
 <%- grid %>
+</main>

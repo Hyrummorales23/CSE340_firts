@@ -149,19 +149,115 @@ footer {
   padding: 1rem;
   margin-top: 2rem;
 }
+/* Inventory Grid Styles */
+#inv-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+#inv-display li {
+  background-color: var(--transparent-box);
+  border: 2px solid var(--light-color);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  max-width: 400px;
+}
+
+#inv-display li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+#inv-display img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 3px solid black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.namePrice {
+  padding: 1rem 0 0;
+  text-align: center;
+}
+
+.namePrice h2 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.namePrice a {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+.namePrice span {
+  display: block;
+  font-size: 1.1rem;
+  color: #0066cc;
+  font-weight: bold;
+}
+
+/*Vehicle Details*/
+.inventory-detail-container {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
+  flex-direction: column
+}
+
+.inventory-image {
+  min-width: 300px;
+}
+
+.inventory-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  border: 4px solid var(--dark-color);
+}
+
+.inventory-info {
+  min-width: 300px;
+  margin: 1.5rem 0;
+}
+
+.price {
+  font-size: 1.8rem;
+  color: #0066cc;
+  font-weight: bold;
+}
+
+.mileage {
+  font-size: 1.2rem;
+  color: #666;
+}
+
 /* Medium/Large Screens (single media query) */
 @media screen and (min-width: 768px) {
   #wrapper {
     max-width: 1100px;
     margin: 0 auto;
   }
-  main{
+  .index-main{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas:
     "hero hero"
     "upgrades reviews";
+    margin: 1rem;
+    gap: 1rem;
+  }
+  main{
     margin: 1rem;
     gap: 1rem;
   }
@@ -192,5 +288,26 @@ footer {
   .upgrade-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+  .detail-view{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .inventory-detail-container{
+    width: clamp(100%,80vw,1000px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .classification-main{
+    display: flex;
+    flex-direction: column;
+  }
+  #inv-display {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: clamp(100%,80vw,1000px);
+  }
+  #inv-display li{
+    min-width: 100%;
+  }
 }

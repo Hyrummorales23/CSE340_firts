@@ -1,9 +1,9 @@
 const invModel = require("../models/inventory-model")
 const Util = {}
 
-/* ************************
+/* ***************************************
  * Constructs the nav HTML unordered list
- ************************** */
+ *****************************************/
 Util.getNav = async function (req, res, next) {
   let data = await invModel.getClassifications()
   let list = "<ul>"
@@ -55,6 +55,32 @@ Util.buildClassificationGrid = async function(data){
     grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
   }
   return grid
+}
+
+/**************************************
+ * Build the Vehicle Details view HTML
+ **************************************/
+Util.buildInventoryDetail = async function(item) {
+  try {
+    let detailHTML = `
+    <div class="inventory-detail-container">
+      <div class="inventory-image">
+        <img src="${item.inv_image}" alt="Image of ${item.inv_make} ${item.inv_model} on CSE Motors">
+      </div>
+      <div class="inventory-info">
+        <h2>${item.inv_year} ${item.inv_make} ${item.inv_model}</h2>
+          <p class="price">$${new Intl.NumberFormat('en-US').format(item.inv_price)}</p>
+          <p class="mileage">${new Intl.NumberFormat('en-US').format(item.inv_miles)} miles</p>
+          <p><strong>Color:</strong> ${item.inv_color}</p>
+          <p><strong>Description:</strong> ${item.inv_description}</p>
+      </div>
+    </div>
+    `
+    return detailHTML
+  } catch (error) {
+    console.error('buildInventoryDetail error:', error)
+    return '<p class="notice">Sorry, we could not display the vehicle details.</p>'
+  }
 }
 
 /* ****************************************
