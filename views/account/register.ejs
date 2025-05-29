@@ -6,6 +6,15 @@
       <% } else { %>
       <% res.redirect('/') %>
       <% } %>
+
+      <% if (errors) { %>
+        <ul class="notice">
+       <% errors.array().forEach(error => { %>
+         <li><%= error.msg %></li>
+      <%  }) %>
+       </ul>
+      <% } %>
+      
       <p class="required-message">* All fields are required *</p>
       <form class="register-form" action="/account/register" method="post">
         <label for="account_firstname">First Name:</label>
