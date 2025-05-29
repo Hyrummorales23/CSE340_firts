@@ -9,7 +9,7 @@
 
         <form class="login-form" action="/account/login" method="post">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="account_email" required placeholder="example@email.com" autocomplete="email">
+            <input type="email" id="email" name="account_email" required placeholder="example@email.com" autocomplete="email" value="<%= locals.account_email %>">
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="account_password" required placeholder="********" autocomplete="current-password"

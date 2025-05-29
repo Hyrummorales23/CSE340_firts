@@ -18,13 +18,13 @@
       <p class="required-message">* All fields are required *</p>
       <form class="register-form" action="/account/register" method="post">
         <label for="account_firstname">First Name:</label>
-        <input type="text" id="account_firstname" name="account_firstname" required placeholder="First Name" autocomplete="given-name">
+        <input type="text" id="account_firstname" name="account_firstname" required placeholder="First Name" autocomplete="given-name" value="<%= locals.account_firstname %>">
   
         <label for="account_lastname">Last Name:</label>
-        <input type="text" id="account_lastname" name="account_lastname" required placeholder="Last Name" autocomplete="family-name">
+        <input type="text" id="account_lastname" name="account_lastname" required placeholder="Last Name" autocomplete="family-name" value="<%= locals.account_lastname %>">
   
         <label for="account_email">Email:</label>
-        <input type="email" id="account_email" name="account_email" required placeholder="example@email.com" autocomplete="email">
+        <input type="email" id="account_email" name="account_email" required placeholder="example@email.com" autocomplete="email" value="<%= locals.account_email %>">
   
         <label for="account_password">Password:</label>
         <input type="password" id="account_password" name="account_password" required 

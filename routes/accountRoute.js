@@ -19,10 +19,12 @@ router.post(
     utilities.handleErrors(accountController.registerAccount)
   )
 
-//Route to process registration
+// Process the login attempt with validation and controller
 router.post(
-    "/register",
-    utilities.handleErrors(accountController.registerAccount)
+  "/login",
+  regValidate.loginRules(),
+  regValidate.checkLoginData,
+  utilities.handleErrors(accountController.loginAccount)
 )
 
 module.exports = router

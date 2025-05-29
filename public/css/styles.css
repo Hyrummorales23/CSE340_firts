@@ -404,12 +404,10 @@ footer {
   border: 3px solid #000;
 }
 input:required:invalid, input:focus:invalid {
-  background-image: url(/images/camaro.jpg);
   background-position: right top;
   background-repeat: no-repeat;
  }
   input:required:valid {
-  background-image: url(/images/delorean.jpg);
   background-position: right top;
   background-repeat: no-repeat;
   }

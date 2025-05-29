@@ -1,6 +1,7 @@
 //Needed resources
 const utilities = require('../utilities')
 const accountModel = require("../models/account-model")
+const { validationResult } = require("express-validator")
 
 /* *********************************
  * Function to build the Login view
@@ -57,4 +58,21 @@ async function registerAccount(req, res) {
   }
 }
 
-module.exports = {buildLogin, buildRegister, registerAccount}
+/****************
+ * Login Process
+ ****************/
+async function loginAccount(req, res) {
+  let errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    return res.render("./account/login", {
+      title: "Login",
+      errors: errors.array(),
+      account_email: req.body.account_email,
+    })
+  }
+
+  // If no errors, continue login logic (for now you can just send success)
+  res.send("Login successful (validation passed)")
+}
+
+module.exports = {buildLogin, buildRegister, registerAccount, loginAccount}
