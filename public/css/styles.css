@@ -732,7 +732,9 @@ select:valid {
     font-size: 1.1rem;
   }
   .add-classification-main,
-  .add-inventory-main {
+  .add-inventory-main,
+  .login-main,
+  .register-main {
     padding: 5rem 0;
     width: clamp(100%,80vw,1000px);
   }
