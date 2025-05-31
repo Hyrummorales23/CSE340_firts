@@ -24,7 +24,7 @@ validate.checkClassificationData = async (req, res, next) => {
     return res.render("inventory/add-classification", {
       title: "Add New Classification",
       nav,
-      errors: errors.array(),
+      errors: errors,
       classification_name
     })
   }
@@ -83,7 +83,7 @@ validate.checkInventoryData = async (req, res, next) => {
       title: "Add New Inventory",
       nav,
       classificationList,
-      errors: errors.array(),
+      errors: errors,
       classification_id,
       inv_make,
       inv_model,
