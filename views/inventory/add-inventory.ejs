@@ -1,5 +1,5 @@
-<section class="add-inventory">
-    <%# This function will dinamicaly create an h1 matching the Title of the view %>
+<section class="add-inventory-main">
+<div class="add-inventory-container">
   <% if (title) { %>
     <h1><%= title %></h1>
     <% } else {
@@ -15,7 +15,7 @@
         </ul>
       <% } %>
       
-      <form action="/inv/add-inventory" method="post">
+      <form class="add-inventory-form" action="/inv/add-inventory" method="post">
         <label for="classification_id">Classification:</label>
         <%- classificationList %>
         
@@ -55,6 +55,7 @@
         <input type="text" name="inv_color" id="inv_color" required
                value="<%= locals.inv_color || '' %>">
         
-        <button type="submit">Add Vehicle</button>
+        <button type="submit" class="add-inventory-btn">Add Vehicle</button>
       </form>
+</div>
 </section>

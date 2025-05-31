@@ -442,61 +442,116 @@ input:required:valid {
   background-color: var(--light-color);
 }
 
-/* Form Styles */
-.add-classification,
-.add-inventory {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 1rem;
-  background-color: var(--transparent-box);
-  border-radius: 8px;
+/* Add Class and Invetory VIEW Form STYLES */
+.add-classification-main,
+.add-inventory-main {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background-color: var(--primary-color);
+  min-height: 80vh;
 }
 
-.add-classification form,
-.add-inventory form {
-  display: grid;
+.add-classification-container,
+.add-inventory-container {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 2rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px; /* Slightly wider than login for inventory form */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.add-classification-container h1,
+.add-inventory-container h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+.add-classification-form,
+.add-inventory-form {
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
 }
 
-.add-classification label,
-.add-inventory label {
+.add-classification-form label,
+.add-inventory-form label {
+  margin-bottom: 0.3rem;
   font-weight: bold;
 }
 
-.add-classification input,
-.add-inventory input,
-.add-inventory textarea,
-.add-inventory select {
+.add-classification-form input,
+.add-inventory-form input,
+.add-inventory-form textarea,
+.add-inventory-form select {
+  padding: 0.6rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  border-radius: 5px;
   width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
 }
 
-.add-inventory textarea {
+.add-inventory-form textarea {
   min-height: 100px;
+  resize: vertical;
 }
 
-.instruction {
-  font-size: 0.8rem;
-  color: #666;
-  margin-top: -0.5rem;
+.add-classification-btn,
+.add-inventory-btn {
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  padding: 0.7rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 1rem;
+}
+
+.add-classification-btn:hover,
+.add-inventory-btn:hover {
+  background-color: #bdc3c7;
 }
 
 /* Error Styles */
 .errors {
-  color: red;
+  color: var(--primary-color);
   list-style: none;
   padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.errors li {
+  background-color: rgba(255, 0, 0, 0.1);
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+/* Instruction text */
+.instruction {
+  font-size: 0.8rem;
+  color: var(--primary-color);
+  opacity: 0.8;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 /* Sticky form highlighting */
-input:invalid, textarea:invalid {
-  border-color: #ff9999;
+input:invalid, 
+textarea:invalid,
+select:invalid {
+  outline: 3px solid #ff9999;
 }
 
-input:valid, textarea:valid {
-  border-color: #99ff99;
+input:valid, 
+textarea:valid,
+select:valid {
+  outline: 3px solid #99ff99;
 }
 
 /* Medium/Large Screens (single media query) */
@@ -595,6 +650,25 @@ input:valid, textarea:valid {
 
   .login-form input,
   .login-btn {
+    font-size: 1.1rem;
+  }
+  .add-classification-main,
+  .add-inventory-main {
+    padding: 5rem 0;
+    width: clamp(100%,80vw,1000px);
+  }
+
+  .add-classification-container,
+  .add-inventory-container {
+    padding: 3rem;
+  }
+
+  .add-classification-form input,
+  .add-inventory-form input,
+  .add-inventory-form textarea,
+  .add-inventory-form select,
+  .add-classification-btn,
+  .add-inventory-btn {
     font-size: 1.1rem;
   }
 }

@@ -1,4 +1,5 @@
-<section class="add-classification">
+<section class="add-classification-main">
+  <div class="add-classification-container">
     <%# This function will dinamicaly create an h1 matching the Title of the view %>
   <% if (title) { %>
     <h1><%= title %></h1>
@@ -15,7 +16,7 @@
       </ul>
     <% } %>
     
-    <form action="/inv/add-classification" method="post">
+    <form class="add-classification-form" action="/inv/add-classification" method="post">
       <label for="classification_name">Classification Name:</label>
       <input type="text" name="classification_name" id="classification_name" 
              required pattern="^[a-zA-Z0-9]+$"
@@ -23,6 +24,7 @@
              value="<%= locals.classification_name || '' %>">
       <p class="instruction">No spaces or special characters allowed</p>
       
-      <button type="submit">Add Classification</button>
+      <button type="submit" class="add-classification-btn">Add Classification</button>
     </form>
-  </section>
+  </div> 
+</section>
