@@ -406,11 +406,98 @@ footer {
 input:required:invalid, input:focus:invalid {
   background-position: right top;
   background-repeat: no-repeat;
- }
-  input:required:valid {
+}
+input:required:valid {
   background-position: right top;
   background-repeat: no-repeat;
-  }
+}
+/* Management View Styles */
+.management-view {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: var(--transparent-box);
+  border-radius: 8px;
+}
+
+.management-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.management-links li {
+  margin: 1rem 0;
+}
+
+.management-links a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--secondary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.management-links a:hover {
+  background-color: var(--light-color);
+}
+
+/* Form Styles */
+.add-classification,
+.add-inventory {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: var(--transparent-box);
+  border-radius: 8px;
+}
+
+.add-classification form,
+.add-inventory form {
+  display: grid;
+  gap: 1rem;
+}
+
+.add-classification label,
+.add-inventory label {
+  font-weight: bold;
+}
+
+.add-classification input,
+.add-inventory input,
+.add-inventory textarea,
+.add-inventory select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-inventory textarea {
+  min-height: 100px;
+}
+
+.instruction {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: -0.5rem;
+}
+
+/* Error Styles */
+.errors {
+  color: red;
+  list-style: none;
+  padding: 0;
+}
+
+/* Sticky form highlighting */
+input:invalid, textarea:invalid {
+  border-color: #ff9999;
+}
+
+input:valid, textarea:valid {
+  border-color: #99ff99;
+}
 
 /* Medium/Large Screens (single media query) */
 @media screen and (min-width: 768px) {
