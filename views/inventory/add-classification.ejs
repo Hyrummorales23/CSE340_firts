@@ -1,0 +1,28 @@
+<section class="add-classification">
+    <%# This function will dinamicaly create an h1 matching the Title of the view %>
+  <% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+    } %>
+    <%- messages() %>
+    
+    <% if (errors) { %>
+      <ul class="errors">
+        <% errors.array().forEach(error => { %>
+          <li><%= error.msg %></li>
+        <% }) %>
+      </ul>
+    <% } %>
+    
+    <form action="/inv/add-classification" method="post">
+      <label for="classification_name">Classification Name:</label>
+      <input type="text" name="classification_name" id="classification_name" 
+             required pattern="^[a-zA-Z0-9]+$"
+             title="No spaces or special characters allowed"
+             value="<%= locals.classification_name || '' %>">
+      <p class="instruction">No spaces or special characters allowed</p>
+      
+      <button type="submit">Add Classification</button>
+    </form>
+  </section>

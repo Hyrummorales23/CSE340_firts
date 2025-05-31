@@ -38,9 +38,64 @@ invCont.buildByInventoryId = async function (req, res, next) {
   }
 }
 
+/**********************************************
+ *Intentional Error for Server Error view Link
+ **********************************************/
 invCont.triggerError = async function(req, res, next) {
   // Intentionally throw an error
   throw new Error("Intentional 500 error triggered");
+}
+
+/**********************************
+ *Build Inventory Management view
+ **********************************/
+ invCont.buildManagement = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("inventory/management", {
+    title: "Vehicle Management",
+    nav,
+    errors: null,
+  })
+}
+
+/**********************************
+ *Build Add-classification view
+ **********************************/
+ invCont.addClassificationView = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("inventory/add-classification", {
+    title: "Add New Classification",
+    nav,
+    errors: null,
+  })
+}
+
+/**********************************
+ * Add-classification Process
+ **********************************/
+invCont.addClassification = async function (req, res, next) {
+  const { classification_name } = req.body
+  let nav = await utilities.getNav()
+  
+  const regResult = await invModel.addClassification(classification_name)
+  
+  if (regResult.rowCount > 0) {
+    req.flash(
+      "notice",
+      `The ${classification_name} classification was successfully added.`
+    )
+    nav = await utilities.getNav() // Refresh nav with new classification
+    res.status(201).render("inventory/management", {
+      title: "Vehicle Management",
+      nav,
+    })
+  } else {
+    req.flash("notice", "Sorry, the classification addition failed.")
+    res.status(501).render("inventory/add-classification", {
+      title: "Add New Classification",
+      nav,
+    })
+  }
 }
 
 module.exports = invCont
