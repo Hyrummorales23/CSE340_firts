@@ -553,6 +553,85 @@ textarea:valid,
 select:valid {
   outline: 3px solid #99ff99;
 }
+/* Flash Message Styles */
+.flash-messages {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 100%;
+  max-width: 400px;
+}
+
+.notice, .error {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  animation: slideIn 0.3s ease-out forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.notice {
+  background-color: #4CAF50; /* Green for success */
+  color: white;
+  border-left: 5px solid #2E7D32;
+}
+
+.error {
+  background-color: #F44336; /* Red for errors */
+  color: white;
+  border-left: 5px solid #C62828;
+}
+
+.notice:before, .error:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.notice-close, .error-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  opacity: 0.8;
+}
+
+.notice-close:hover, .error-close:hover {
+  opacity: 1;
+}
+
+/* Animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* For messages in specific views */
+.management-view .notice,
+.management-view .error {
+  position: static;
+  margin: 1rem auto;
+  max-width: 600px;
+  animation: none;
+}
 
 /* Medium/Large Screens (single media query) */
 @media screen and (min-width: 768px) {
@@ -670,5 +749,14 @@ select:valid {
   .add-classification-btn,
   .add-inventory-btn {
     font-size: 1.1rem;
+  }
+  .flash-messages {
+    top: 30px;
+    right: 30px;
+  }
+  
+  .management-view .notice,
+  .management-view .error {
+    max-width: 800px;
   }
 }
