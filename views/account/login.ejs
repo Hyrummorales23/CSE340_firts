@@ -7,6 +7,14 @@
           res.redirect('/')
         } %>
 
+    <% if (errors && !errors.isEmpty()) { %>
+        <ul class="errors">
+          <% errors.array().forEach(error => { %>
+            <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+      <% } %>
+
         <form class="login-form" action="/account/login" method="post">
             <label for="email">Email:</label>
             <input type="email" id="email" name="account_email" required placeholder="example@email.com" autocomplete="email" value="<%= locals.account_email %>">

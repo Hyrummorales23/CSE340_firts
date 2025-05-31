@@ -101,20 +101,18 @@ validate.checkRegData = async (req, res, next) => {
  * Check login data and return errors or continue
  * ********************************************************/
 validate.checkLoginData = async (req, res, next) => {
-  const { account_email } = req.body
-  let errors = []
-  errors = validationResult(req)
+  const errors = validationResult(req)
+  
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav()
-    res.render("account/login", {
-      errors: errors.array(),
+    return res.render("account/login", {
       title: "Login",
       nav,
-      account_email,
+      errors: errors, // Pass the entire errors object
+      account_email: req.body.account_email // Maintain email stickiness
     })
-    return
   }
   next()
 }
   
-  module.exports = validate
+module.exports = validate
