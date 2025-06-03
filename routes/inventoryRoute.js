@@ -16,7 +16,7 @@ router.get("/trigger-error", utilities.handleErrors(invController.triggerError))
 
 
 // Inventory Management Route
-router.get("/management", utilities.handleErrors(invController.buildManagement));
+router.get("/", utilities.handleErrors(invController.buildManagement));
 //Add-Classification View Route
 router.get("/add-classification", utilities.handleErrors(invController.addClassificationView))
 //Route to post the new Classification to the Database
