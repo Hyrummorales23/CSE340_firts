@@ -329,11 +329,15 @@ invCont.deleteInventoryView = async function (req, res, next) {
 invCont.deleteInventory = async function (req, res, next) {
   try {
     const inv_id = parseInt(req.body.inv_id)
+    
+    // FIRST get the item data before deletion
+    const itemData = await invModel.getInventoryItemById(inv_id)
+    const itemName = itemData ? `${itemData.inv_make} ${itemData.inv_model}` : 'Vehicle'
+    
+    // THEN perform the deletion
     const deleteResult = await invModel.deleteInventoryItem(inv_id)
     
     if (deleteResult.rowCount === 1) {
-      const itemData = await invModel.getInventoryItemById(inv_id)
-      const itemName = itemData ? `${itemData.inv_make} ${itemData.inv_model}` : 'Vehicle'
       req.flash("notice", `The ${itemName} was successfully deleted.`)
       res.redirect("/inv/")
     } else {
