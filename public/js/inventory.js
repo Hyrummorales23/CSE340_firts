@@ -42,3 +42,10 @@ function buildInventoryList(data) {
     // Display the contents in the Inventory Management view 
     inventoryDisplay.innerHTML = dataTable; 
 }
+
+//Function to prevent update functionality if no data was updated
+const form = document.querySelector("#updateForm")
+    form.addEventListener("change", function () {
+      const updateBtn = document.querySelector("button")
+      updateBtn.removeAttribute("disabled")
+    })

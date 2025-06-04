@@ -94,4 +94,52 @@ async function addInventory(invData) {
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId, getInventoryItemById, addClassification, addInventory}
+/* ***************************
+ *  Edit Inventory Data
+ * ************************** */
+async function editInventory(
+  inv_id,
+  inv_make,
+  inv_model,
+  inv_description,
+  inv_image,
+  inv_thumbnail,
+  inv_price,
+  inv_year,
+  inv_miles,
+  inv_color,
+  classification_id
+) {
+  try {
+    console.log("Model received parameters:", {
+      inv_id, inv_make, inv_model, inv_description,
+      inv_image, inv_thumbnail, inv_price, inv_year,
+      inv_miles, inv_color, classification_id
+    });
+
+    const sql =
+      "UPDATE public.inventory SET inv_make = $1, inv_model = $2, inv_description = $3, inv_image = $4, inv_thumbnail = $5, inv_price = $6, inv_year = $7, inv_miles = $8, inv_color = $9, classification_id = $10 WHERE inv_id = $11 RETURNING *"
+    const data = await pool.query(sql, [
+      inv_make,
+      inv_model,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      parseFloat(inv_price),
+      parseInt(inv_year),
+      parseInt(inv_miles),
+      inv_color,
+      parseInt(classification_id),
+      parseInt(inv_id)
+    ]);
+    
+    console.log("Update result:", data.rows[0]); // Debug log
+    return data.rows.length > 0 ? data.rows[0] : null
+  } catch (error) {
+    console.error("model error: " + error);
+    throw error;
+  }
+}
+
+module.exports = {getClassifications, getInventoryByClassificationId, 
+  getInventoryItemById, addClassification, addInventory, editInventory}
