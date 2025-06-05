@@ -215,6 +215,15 @@ async function updatePassword(req, res) {
   }
 }
 
+/* **********************
+* Process Logout Request
+* ***********************/
+async function accountLogout(req, res) {
+  res.clearCookie("jwt")
+  req.flash("notice", "You have been logged out")
+  res.redirect("/")
+}
+
 module.exports = {buildLogin, buildRegister, registerAccount, 
   accountLogin, buildAccountManagement, buildUpdateView,
-  updateAccount, updatePassword}
+  updateAccount, updatePassword, accountLogout}

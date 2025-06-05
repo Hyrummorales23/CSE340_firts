@@ -50,4 +50,8 @@ router.post("/update-password",
   utilities.handleErrors(accountController.updatePassword)
 )
 
+// Add logout route
+router.get("/logout", 
+  utilities.handleErrors(accountController.accountLogout))
+
 module.exports = router
