@@ -279,7 +279,7 @@ footer {
   line-height: 1.6;
 }
 /* MOBILE-FIRST LOGIN VIEW STYLES */
-.login-main {
+.login-main, .update-main {
   display: flex;
   justify-content: center;
   padding: 2rem 1rem;
@@ -287,7 +287,7 @@ footer {
   min-height: 80vh;
 }
 
-.login-container {
+.login-container,.update-container {
   background-color: var(--secondary-color);
   color: var(--primary-color);
   padding: 2rem;
@@ -303,17 +303,20 @@ footer {
   color: var(--primary-color);
 }
 
-.login-form {
+.login-form,
+.update-form, .password-form {
   display: flex;
   flex-direction: column;
 }
 
-.login-form label {
+.login-form label,
+.update-form label, .password-form label {
   margin-bottom: 0.3rem;
   font-weight: bold;
 }
 
-.login-form input {
+.login-form input,
+.update-form input, .password-form input {
   padding: 0.6rem;
   margin-bottom: 1rem;
   border: none;
@@ -453,7 +456,8 @@ input:required:valid {
 }
 
 .add-classification-container,
-.add-inventory-container {
+.add-inventory-container,
+.update-container {
   background-color: var(--secondary-color);
   color: var(--primary-color);
   padding: 2rem;
@@ -464,14 +468,16 @@ input:required:valid {
 }
 
 .add-classification-container h1,
-.add-inventory-container h1 {
+.add-inventory-container h1,
+.update-container h1 {
   text-align: center;
   margin-bottom: 1.5rem;
   color: var(--primary-color);
 }
 
 .add-classification-form,
-.add-inventory-form {
+.add-inventory-form,
+.update-form, .password-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -485,7 +491,8 @@ input:required:valid {
 
 .add-classification-form input,
 .add-inventory-form input,
-.add-inventory-form textarea,
+.add-inventory-form textarea
+.update-form textarea, .password-form textarea,
 .add-inventory-form select {
   padding: 0.6rem;
   margin-bottom: 0.5rem;
@@ -500,7 +507,8 @@ input:required:valid {
 }
 
 .add-classification-btn,
-.add-inventory-btn {
+.add-inventory-btn,
+.update-btn {
   background-color: #ecf0f1;
   color: #2c3e50;
   padding: 0.7rem;
@@ -513,7 +521,8 @@ input:required:valid {
 }
 
 .add-classification-btn:hover,
-.add-inventory-btn:hover {
+.add-inventory-btn:hover,
+.update-btn:hover {
   background-color: #bdc3c7;
 }
 
@@ -632,6 +641,13 @@ select:valid {
   max-width: 600px;
   animation: none;
 }
+.update-main{
+  display: flex;
+  flex-direction: column;
+}
+.update-container{
+  margin-bottom: 2rem;
+}
 
 /* Medium/Large Screens (single media query) */
 @media screen and (min-width: 768px) {
@@ -740,16 +756,18 @@ select:valid {
   }
 
   .add-classification-container,
-  .add-inventory-container {
+  .add-inventory-container,
+  .update-container {
     padding: 3rem;
   }
-
+ 
   .add-classification-form input,
   .add-inventory-form input,
   .add-inventory-form textarea,
   .add-inventory-form select,
   .add-classification-btn,
-  .add-inventory-btn {
+  .add-inventory-btn,
+  .update-btn {
     font-size: 1.1rem;
   }
   .flash-messages {
