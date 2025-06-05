@@ -16,9 +16,16 @@ router.get("/trigger-error", utilities.handleErrors(invController.triggerError))
 
 
 // Inventory Management Route
-router.get("/", utilities.handleErrors(invController.buildManagement));
+router.get("/", 
+  utilities.checkLogin,
+  utilities.checkAccountType("Employee", "Admin"),
+  utilities.handleErrors(invController.buildManagement));
 //Add-Classification View Route
-router.get("/add-classification", utilities.handleErrors(invController.addClassificationView))
+router.get("/add-classification", 
+  utilities.checkLogin,
+  utilities.checkAccountType("Employee", "Admin"),
+  utilities.handleErrors(invController.addClassificationView)
+)
 //Route to post the new Classification to the Database
 router.post(
     "/add-classification",
@@ -27,7 +34,10 @@ router.post(
     utilities.handleErrors(invController.addClassification)
 )
 //Add-Inventory View Route
-router.get("/add-inventory", utilities.handleErrors(invController.addInventoryView))
+router.get("/add-inventory", 
+  utilities.checkLogin, 
+  utilities.checkAccountType("Employee", "Admin"), 
+  utilities.handleErrors(invController.addInventoryView))
 //Route to post the new Inventory to the Database
 router.post(
   "/add-inventory",
@@ -38,8 +48,11 @@ router.post(
 
 //Route to getInventory by classificaiton_id in the Manage Inventory view
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
-//Edit Inventory View Route
-router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryView))
+//Edit-Inventory View Route
+router.get("/edit/:inv_id", 
+  utilities.checkLogin,
+  utilities.checkAccountType("Employee", "Admin"),
+  utilities.handleErrors(invController.editInventoryView))
 //Route to post the new Inventory to the Database
 router.post(
   "/edit-inventory",
@@ -48,8 +61,11 @@ router.post(
   utilities.handleErrors(invController.editInventory)
 )
 
-// Delete Inventory View Route
-router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteInventoryView))
+// Delete-Inventory View Route
+router.get("/delete/:inv_id", 
+  utilities.checkLogin,
+  utilities.checkAccountType("Employee", "Admin"),
+  utilities.handleErrors(invController.deleteInventoryView))
 // Route to process the deletion
 router.post(
   "/delete-inventory",

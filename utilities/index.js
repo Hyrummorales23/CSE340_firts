@@ -142,6 +142,30 @@ Util.checkLogin = (req, res, next) => {
     req.flash("notice", "Please log in.")
     return res.redirect("/account/login")
   }
- }
+}
+
+/* ***************************************
+* Check Account Type Middleware
+************************************** */
+Util.checkAccountType = (...allowedTypes) => {
+  return (req, res, next) => {
+    if (!req.cookies.jwt) {
+      req.flash("notice", "Please log in")
+      return res.redirect("/account/login")
+    }
+    
+    jwt.verify(
+      req.cookies.jwt,
+      process.env.ACCESS_TOKEN_SECRET,
+      (err, decoded) => {
+        if (err || !allowedTypes.includes(decoded.account_type)) {
+          req.flash("notice", "Access restricted")
+          return res.redirect("/account/login")
+        }
+        next()
+      }
+    )
+  }
+}
 
 module.exports = Util
