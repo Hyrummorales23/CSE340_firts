@@ -1,11 +1,6 @@
-/******* Change Box Model ***************/
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
+/********************************************
+* GLOBAL STYLES & VARIABLES
+********************************************/
 :root {
   --primary-color: white;
   --secondary-color: #2c3e50;
@@ -16,11 +11,12 @@
   --body-font: 'Open Sans', sans-serif;
 }
 
-h1, h2{
-  color: var(--dark-color);
-  font-family: var(--heading-font);
-  font-weight: 700;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
+
 body {
   line-height: 1.6;
   color: var(--dark-color);
@@ -29,6 +25,15 @@ body {
   font-weight: 400;
 }
 
+h1, h2 {
+  color: var(--dark-color);
+  font-family: var(--heading-font);
+  font-weight: 700;
+}
+
+/********************************************
+* LAYOUT STRUCTURE
+********************************************/
 #wrapper {
   max-width: 100%;
   overflow-x: hidden;
@@ -39,7 +44,14 @@ body {
   max-width: 800px;
 }
 
-/* Header Styles */
+main {
+  margin: 1rem;
+  gap: 1rem;
+}
+
+/********************************************
+* HEADER & NAVIGATION
+********************************************/
 #top-header {
   color: white;
   padding: 1rem;
@@ -47,17 +59,18 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
 .siteName a {
-  color: var(--secondary-color); /*CSE Motors Title*/
+  color: var(--secondary-color);
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: bold;
 }
+
 #tools a {
-  color: var(--secondary-color); /*My account button*/
+  color: var(--secondary-color);
   text-decoration: none;
 }
-/* Navigation */
 
 nav ul {
   width: 100%;
@@ -67,6 +80,7 @@ nav ul {
   background-color: var(--secondary-color); 
   padding: 0.5rem;
 }
+
 nav li {
   margin-right: 1rem;
 }
@@ -76,7 +90,9 @@ nav li a {
   text-decoration: none;
 }
 
-/* Main Content */
+/********************************************
+* HERO SECTION
+********************************************/
 .hero {
   margin: 2rem 0;
   position: relative;
@@ -85,6 +101,7 @@ nav li a {
   overflow: hidden;
   max-width: 850px;
 }
+
 .hero-image {
   width: 100%;
   max-width: 700px;
@@ -94,11 +111,13 @@ nav li a {
   top: 0;
   right: 0;
 }
+
 .hero-content {
   position: relative;
   z-index: 2;
   padding-left: 2rem;
 }
+
 .featured-vehicle {
   color: var(--light-color);
   background-color: var(--transparent-box);
@@ -110,46 +129,50 @@ nav li a {
   margin-top: 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .featured-vehicle h2 {
   margin-bottom: 1rem;
 }
+
 .featured-vehicle img {
   width: 100%;
   max-width: 150px;
   height: auto;
 }
+
+/********************************************
+* CONTENT SECTIONS
+********************************************/
 .reviews {
   margin: 2rem 0;
 }
+
 .review-list {
   list-style-position: inside;
   padding-left: 1rem;
 }
+
 .upgrades {
   margin: 2rem 0;
 }
+
 .upgrade-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
+
 .upgrade-item {
   background-color: var(--light-color); 
   padding: 1rem;
   border-radius: 5px;
   text-align: center;
   border-color: var(--secondary-color);
-  
 }
-/* Footer */
-footer {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  text-align: left;
-  padding: 1rem;
-  margin-top: 2rem;
-}
-/* Inventory Grid Styles */
+
+/********************************************
+* INVENTORY STYLES
+********************************************/
 #inv-display {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -205,12 +228,11 @@ footer {
   font-weight: bold;
 }
 
-/*Vehicle Details*/
 .inventory-detail-container {
   display: flex;
   gap: 2rem;
   margin: 2rem 0;
-  flex-direction: column
+  flex-direction: column;
 }
 
 .inventory-image {
@@ -240,6 +262,319 @@ footer {
   font-size: 1.2rem;
   color: #666;
 }
+
+/********************************************
+* FORM STYLES
+********************************************/
+.login-main,
+.register-main,
+.add-classification-main,
+.add-inventory-main,
+.update-main {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background-color: var(--primary-color);
+  min-height: 80vh;
+}
+
+.login-container,
+.register-container,
+.add-classification-container,
+.add-inventory-container,
+.update-container {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 2rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.login-container h1,
+.register-container h1,
+.add-classification-container h1,
+.add-inventory-container h1,
+.update-container h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+.login-form,
+.register-form,
+.add-classification-form,
+.add-inventory-form,
+.update-form,
+.password-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-form label,
+.register-form label,
+.add-classification-form label,
+.add-inventory-form label,
+.update-form label,
+.password-form label {
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+}
+
+.login-form input,
+.register-form input,
+.add-classification-form input,
+.add-inventory-form input,
+.update-form input,
+.password-form input,
+.add-inventory-form textarea,
+.update-form textarea,
+.password-form textarea,
+.add-inventory-form select {
+  padding: 0.6rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.add-inventory-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.login-btn,
+.register-button,
+.add-classification-btn,
+.add-inventory-btn,
+.update-btn, .register-button,
+.login-btn {
+  width: 100%;
+  padding: 0.7rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 1rem;
+}
+
+.login-btn,
+.add-classification-btn,
+.add-inventory-btn,
+.update-btn, .login-btn, .register-button {
+  background-color: #ecf0f1;
+  color: #2c3e50;
+}
+
+.login-btn:hover,
+.add-classification-btn:hover,
+.add-inventory-btn:hover,
+.update-btn:hover, .login-btn:hover,
+.register-button:hover {
+  background-color: #bdc3c7;
+}
+
+#pwbutton {
+  border: 2px solid var(--primary-color);
+  background-color: var(--primary-color);
+  color: var(--dark-color);
+  border-radius: 5px;
+  padding: 2px;
+  margin-top: 1em;
+  font-size: medium;
+  width: 7em;
+  text-align: center;
+  cursor: pointer;
+}
+
+#pwbutton:hover {
+  border: 3px solid var(--light-color);
+}
+
+input:required:invalid,
+input:focus:invalid,
+textarea:invalid,
+select:invalid {
+  outline: 3px solid #ff9999;
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+input:required:valid,
+textarea:valid,
+select:valid {
+  outline: 3px solid #99ff99;
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+/********************************************
+* INVENTORY MANAGEMENT VIEW
+********************************************/
+.management-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.management-section h2 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.management-section p {
+  margin-bottom: 1.5rem;
+  color: var(--secondary-color);
+}
+
+#inventoryDisplay {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+#inventoryDisplay th {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+#inventoryDisplay td {
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+#inventoryDisplay tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#inventoryDisplay tr:hover {
+  background-color: #e6f7ff;
+}
+
+/********************************************
+* ACCOUNT MANAGEMENT VIEW
+********************************************/
+.account-management-view {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: var(--transparent-box);
+  border-radius: 8px;
+}
+
+.account-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.account-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.management-link {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--secondary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.management-link:hover {
+  background-color: var(--light-color);
+}
+/********************************************
+* SIMPLE CLASSIFICATION SELECT STYLES
+********************************************/
+select#classificationList {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  padding: 0.8rem 1rem;
+  margin: 1rem 0;
+  font-size: 1rem;
+  font-family: var(--body-font);
+  color: var(--dark-color);
+  background-color: white;
+  border: 2px solid var(--secondary-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+select#classificationList:hover {
+  border-color: var(--light-color);
+  box-shadow: 0 0 0 2px rgba(13, 196, 225, 0.2);
+}
+
+select#classificationList:focus {
+  outline: none;
+  border-color: var(--light-color);
+  box-shadow: 0 0 0 3px rgba(13, 196, 225, 0.3);
+}
+
+/* Simple dropdown arrow styling */
+select#classificationList {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%232c3e50' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/********************************************
+* UPDATE ACCOUNT VIEW STYLES
+********************************************/
+.update-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  min-height: 80vh;
+  width: 100%;
+}
+
+.update-forms-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.update-container {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 100%;
+}
+
+.update-container h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+
+/********************************************
+* ERROR HANDLING
+********************************************/
 .error-container {
   position: relative;
   min-height: 60vh;
@@ -278,255 +613,7 @@ footer {
   margin-top: 1rem;
   line-height: 1.6;
 }
-/* MOBILE-FIRST LOGIN VIEW STYLES */
-.login-main, .update-main {
-  display: flex;
-  justify-content: center;
-  padding: 2rem 1rem;
-  background-color: var(--primary-color);
-  min-height: 80vh;
-}
 
-.login-container,.update-container {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  padding: 2rem;
-  border-radius: 10px;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.login-container h1 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: var(--primary-color);
-}
-
-.login-form,
-.update-form, .password-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.login-form label,
-.update-form label, .password-form label {
-  margin-bottom: 0.3rem;
-  font-weight: bold;
-}
-
-.login-form input,
-.update-form input, .password-form input {
-  padding: 0.6rem;
-  margin-bottom: 1rem;
-  border: none;
-  border-radius: 5px;
-}
-
-.login-btn {
-  background-color: #ecf0f1;
-  color: #2c3e50;
-  padding: 0.7rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.login-btn:hover {
-  background-color: #bdc3c7;
-}
-
-.signup-link {
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.signup-link a {
-  color: #ecf0f1;
-  text-decoration: underline;
-}
-
-/* styles/register.css */
-
-.register-main {
-  display: flex;
-  justify-content: center;
-  padding: 2rem;
-}
-.required-message{
-  color: #0066cc;
-}
-.register-container {
-  max-width: 400px;
-  width: 100%;
-  background: var(--primary-color);
-  border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-.register-form label,
-.register-form input {
-  display: block;
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
-.register-form input {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.register-button {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: darkgreen;
-  color: var(--primary-color);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.register-button:hover {
-  background-color: seagreen;
-}
-#pwbutton{
-  border: 2px solid #000;
-  border-radius: 5px;
-  padding: 2px;
-  margin-top: 1em;
-  font-size: medium;
-  width: 7em;
-  text-align: center;
-  cursor: pointer;
-}
-#pwbutton:hover {
-  border: 3px solid #000;
-}
-input:required:invalid, input:focus:invalid {
-  background-position: right top;
-  background-repeat: no-repeat;
-}
-input:required:valid {
-  background-position: right top;
-  background-repeat: no-repeat;
-}
-/* Management View Styles */
-.management-view {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 1rem;
-  background-color: var(--transparent-box);
-  border-radius: 8px;
-}
-
-.management-links ul {
-  list-style: none;
-  padding: 0;
-}
-
-.management-links li {
-  margin: 1rem 0;
-}
-
-.management-links a {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: var(--secondary-color);
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-}
-
-.management-links a:hover {
-  background-color: var(--light-color);
-}
-
-/* Add Class and Invetory VIEW Form STYLES */
-.add-classification-main,
-.add-inventory-main {
-  display: flex;
-  justify-content: center;
-  padding: 2rem 1rem;
-  background-color: var(--primary-color);
-  min-height: 80vh;
-}
-
-.add-classification-container,
-.add-inventory-container,
-.update-container {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  padding: 2rem;
-  border-radius: 10px;
-  width: 100%;
-  max-width: 600px; /* Slightly wider than login for inventory form */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.add-classification-container h1,
-.add-inventory-container h1,
-.update-container h1 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: var(--primary-color);
-}
-
-.add-classification-form,
-.add-inventory-form,
-.update-form, .password-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.add-classification-form label,
-.add-inventory-form label {
-  margin-bottom: 0.3rem;
-  font-weight: bold;
-}
-
-.add-classification-form input,
-.add-inventory-form input,
-.add-inventory-form textarea
-.update-form textarea, .password-form textarea,
-.add-inventory-form select {
-  padding: 0.6rem;
-  margin-bottom: 0.5rem;
-  border: none;
-  border-radius: 5px;
-  width: 100%;
-}
-
-.add-inventory-form textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
-.add-classification-btn,
-.add-inventory-btn,
-.update-btn {
-  background-color: #ecf0f1;
-  color: #2c3e50;
-  padding: 0.7rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  margin-top: 1rem;
-}
-
-.add-classification-btn:hover,
-.add-inventory-btn:hover,
-.update-btn:hover {
-  background-color: #bdc3c7;
-}
-
-/* Error Styles */
 .errors {
   color: var(--primary-color);
   list-style: none;
@@ -541,28 +628,9 @@ input:required:valid {
   margin-bottom: 0.5rem;
 }
 
-/* Instruction text */
-.instruction {
-  font-size: 0.8rem;
-  color: var(--primary-color);
-  opacity: 0.8;
-  margin-top: -0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Sticky form highlighting */
-input:invalid, 
-textarea:invalid,
-select:invalid {
-  outline: 3px solid #ff9999;
-}
-
-input:valid, 
-textarea:valid,
-select:valid {
-  outline: 3px solid #99ff99;
-}
-/* Flash Message Styles */
+/********************************************
+* FLASH MESSAGES
+********************************************/
 .flash-messages {
   position: fixed;
   top: 20px;
@@ -572,7 +640,8 @@ select:valid {
   max-width: 400px;
 }
 
-.notice, .error {
+.notice,
+.error {
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 5px;
@@ -586,18 +655,19 @@ select:valid {
 }
 
 .notice {
-  background-color: #4CAF50; /* Green for success */
+  background-color: #4CAF50;
   color: white;
   border-left: 5px solid #2E7D32;
 }
 
 .error {
-  background-color: #F44336; /* Red for errors */
+  background-color: #F44336;
   color: white;
   border-left: 5px solid #C62828;
 }
 
-.notice:before, .error:before {
+.notice:before,
+.error:before {
   content: '';
   position: absolute;
   left: 0;
@@ -607,7 +677,8 @@ select:valid {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.notice-close, .error-close {
+.notice-close,
+.error-close {
   background: none;
   border: none;
   color: white;
@@ -617,11 +688,59 @@ select:valid {
   opacity: 0.8;
 }
 
-.notice-close:hover, .error-close:hover {
+.notice-close:hover,
+.error-close:hover {
   opacity: 1;
 }
 
-/* Animation */
+.management-view .notice,
+.management-view .error {
+  position: static;
+  margin: 1rem auto;
+  max-width: 600px;
+  animation: none;
+}
+
+/********************************************
+* FOOTER
+********************************************/
+footer {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  text-align: left;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/********************************************
+* UTILITY CLASSES
+********************************************/
+.required-message {
+  color: var(--primary-color);
+}
+
+.instruction {
+  font-size: 0.8rem;
+  color: var(--primary-color);
+  opacity: 0.8;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.signup-link, .login-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.signup-link a,
+.login-link a {
+  color: #ecf0f1;
+  text-decoration: underline;
+}
+
+/********************************************
+* ANIMATIONS
+********************************************/
 @keyframes slideIn {
   from {
     transform: translateX(100%);
@@ -633,61 +752,47 @@ select:valid {
   }
 }
 
-/* For messages in specific views */
-.management-view .notice,
-.management-view .error {
-  position: static;
-  margin: 1rem auto;
-  max-width: 600px;
-  animation: none;
-}
-.update-main{
-  display: flex;
-  flex-direction: column;
-}
-.update-container{
-  margin-bottom: 2rem;
-}
-
-/* Medium/Large Screens (single media query) */
+/********************************************
+* MEDIA QUERIES
+********************************************/
 @media screen and (min-width: 768px) {
   #wrapper {
     max-width: 1100px;
     margin: 0 auto;
   }
-  .index-main{
+
+  .index-main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas:
-    "hero hero"
-    "upgrades reviews";
-    margin: 1rem;
-    gap: 1rem;
-  }
-  main{
+      "hero hero"
+      "upgrades reviews";
     margin: 1rem;
     gap: 1rem;
   }
 
-  .hero{
+  .hero {
     grid-column: span 2;
     grid-area: hero;
   }
-  .reviews{
+
+  .reviews {
     grid-area: reviews;
     gap: 1rem;
     padding: 1rem;
     margin: 1rem;
   }
-  .reviews li{
+
+  .reviews li {
     margin-bottom: 1rem;
   }
-  .upgrades{
+
+  .upgrades {
     grid-area: upgrades;
   }
 
-  body{
+  body {
     background-image: url('/images/site/checkerboard.jpg');
     background-attachment: fixed;
     background-size: auto;
@@ -696,31 +801,37 @@ select:valid {
   .upgrade-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .detail-view{
+
+  .detail-view {
     width: 100%;
     display: flex;
     flex-direction: column;
   }
-  .inventory-detail-container{
-    width: clamp(100%,80vw,1000px);
+
+  .inventory-detail-container {
+    width: clamp(100%, 80vw, 1000px);
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-  .classification-main{
+
+  .classification-main {
     display: flex;
     flex-direction: column;
   }
+
   #inv-display {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    width: clamp(100%,80vw,1000px);
+    width: clamp(100%, 80vw, 1000px);
   }
-  #inv-display li{
+
+  #inv-display li {
     min-width: 100%;
   }
+
   .error-container {
     min-height: 70vh;
-    width: clamp(100%,80vw,1000px);
+    width: clamp(100%, 80vw, 1000px);
   }
 
   .error-content {
@@ -735,48 +846,64 @@ select:valid {
   .roadtrip-message {
     font-size: 1.2rem;
   }
-  .login-main {
-    padding: 5rem 0;
-  }
 
-  .login-container {
-    padding: 3rem;
-  }
-
-  .login-form input,
-  .login-btn {
-    font-size: 1.1rem;
-  }
-  .add-classification-main,
-  .add-inventory-main,
   .login-main,
-  .register-main {
+  .register-main,
+  .add-classification-main,
+  .add-inventory-main {
     padding: 5rem 0;
-    width: clamp(100%,80vw,1000px);
+    width: clamp(100%, 80vw, 1000px);
   }
 
+  .login-container,
   .add-classification-container,
   .add-inventory-container,
   .update-container {
     padding: 3rem;
   }
- 
+
+  .login-form input,
+  .login-btn,
   .add-classification-form input,
   .add-inventory-form input,
   .add-inventory-form textarea,
   .add-inventory-form select,
   .add-classification-btn,
   .add-inventory-btn,
-  .update-btn {
+  .update-btn, .login-btn,
+  .register-button {
     font-size: 1.1rem;
   }
+
   .flash-messages {
     top: 30px;
     right: 30px;
   }
-  
+
   .management-view .notice,
   .management-view .error {
     max-width: 800px;
+  }
+  /*account management view*/
+  .account-management-view {
+    width: clamp(100%, 80vw, 1000px);
+    padding: 2rem;
+  }
+
+  .account-content {
+    gap: 2rem;
+  }
+
+  .account-links {
+    gap: 1.5rem;
+  }
+
+  .management-link {
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+  }
+  .update-forms-container{
+    width: clamp(300px, 900px, 1600px);
+    align-items: center;
   }
 }

@@ -1,19 +1,26 @@
-<section class="management-view">
-    <%# This function will dinamicaly create an h1 matching the Title of the view %>
+<section class="account-management-view">
   <% if (title) { %>
     <h1><%= title %></h1>
-    <% } else {
-      res.redirect('/')
-    } %>
     <%- messages() %>
-    
-    <div class="management-links">
-      <ul>
-        <li><a href="/inv/add-classification">Add New Classification</a></li>
-        <li><a href="/inv/add-inventory">Add New Inventory</a></li>
-      </ul>
+  <% } else {
+    res.redirect('/')
+  } %>
+  
+  <% if (errors && !errors.isEmpty()) { %>
+    <ul class="errors">
+      <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <div class="account-content">
+    <div class="account-links">
+      <a href="/inv/add-classification" class="management-link">Add New Classification</a>
+      <a href="/inv/add-inventory" class="management-link">Add New Inventory</a>
     </div>
-    <div>
+
+    <div class="management-section">
       <h2>Manage Inventory</h2>
       <p>Choose a classification to see those inventory items.</p>
       <%- classificationSelect %>
@@ -22,5 +29,6 @@
 
       <nonscript>JavaScript must be enabled to use this page.</nonscript>
     </div>
-  </section>
-  <script src="/js/inventory.js"></script>
+  </div>
+</section>
+<script src="/js/inventory.js"></script>
