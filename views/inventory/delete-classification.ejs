@@ -1,0 +1,39 @@
+<section class="add-inventory-main">
+    <div class="add-inventory-container">
+      <% if (title) { %>
+      <h1><%= title %></h1>
+      <%- messages() %>
+      <% } else {
+        res.redirect('/')
+      } %>
+  
+      <% if (errors) { %>
+      <ul class="errors">
+        <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+        <% }) %>
+      </ul>
+      <% } %>
+  
+      <form class="add-inventory-form" action="/inv/delete-classification" method="post">
+        <label for="classification_id">Select Classification to Delete:</label>
+        <select name="classification_id" id="classification_id" required>
+          <option value="">Choose a Classification</option>
+          <% classifications.forEach(classification => { %>
+            <option value="<%= classification.classification_id %>">
+              <%= classification.classification_name %>
+            </option>
+          <% }) %>
+        </select>
+  
+        <div class="checkbox-container">
+          <input type="checkbox" name="delete_vehicles" id="delete_vehicles">
+          <label for="delete_vehicles">Delete all vehicles in this classification</label>
+        </div>
+  
+        <p class="notice">Warning: This action cannot be undone. Deleting a classification will permanently remove it from the system.</p>
+  
+        <button type="submit" class="add-inventory-btn">Delete Classification</button>
+      </form>
+    </div>
+  </section>

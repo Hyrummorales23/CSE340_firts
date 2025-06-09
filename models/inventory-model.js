@@ -154,6 +154,34 @@ async function deleteInventoryItem(inv_id) {
   }
 }
 
+/* **************************************
+* Delete all vehicles in a classification
+**************************************/
+async function deleteVehiclesByClassification(classification_id) {
+  try {
+    const sql = 'DELETE FROM inventory WHERE classification_id = $1 RETURNING *'
+    const data = await pool.query(sql, [classification_id])
+    return data
+  } catch (error) {
+    console.error("deleteVehiclesByClassification error: " + error)
+    throw error
+  }
+}
+
+/* **************************************
+* Delete a classification
+**************************************/
+async function deleteClassification(classification_id) {
+  try {
+    const sql = 'DELETE FROM classification WHERE classification_id = $1 RETURNING *'
+    const data = await pool.query(sql, [classification_id])
+    return data
+  } catch (error) {
+    console.error("deleteClassification error: " + error)
+    throw error
+  }
+}
+
 module.exports = {
   getClassifications, 
   getInventoryByClassificationId, 
@@ -161,5 +189,7 @@ module.exports = {
   addClassification, 
   addInventory, 
   editInventory,
-  deleteInventoryItem
+  deleteInventoryItem,
+  deleteVehiclesByClassification,
+  deleteClassification
 }

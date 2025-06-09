@@ -349,4 +349,51 @@ invCont.deleteInventory = async function (req, res, next) {
   }
 }
 
+/* ****************************************
+* Build delete classification view
+*****************************************/
+invCont.buildDeleteClassificationView = async function (req, res, next) {
+  try {
+    let nav = await utilities.getNav()
+    const classifications = await invModel.getClassifications()
+    
+    res.render("inventory/delete-classification", {
+      title: "Delete Classification",
+      nav,
+      errors: null,
+      classifications: classifications.rows
+    })
+  } catch (error) {
+    next(error)
+  }
+}
+
+/* ****************************************
+* Process classification deletion
+*****************************************/
+invCont.deleteClassification = async function (req, res, next) {
+  try {
+    const { classification_id, delete_vehicles } = req.body
+    
+    // First delete vehicles if checkbox was checked
+    if (delete_vehicles === 'on') {
+      await invModel.deleteVehiclesByClassification(classification_id)
+    }
+    
+    // Then delete the classification
+    const deleteResult = await invModel.deleteClassification(classification_id)
+    
+    if (deleteResult.rowCount === 1) {
+      req.flash("notice", "Classification was successfully deleted.")
+      res.redirect("/inv/")
+    } else {
+      req.flash("notice", "Sorry, the deletion failed.")
+      res.redirect("/inv/delete-classification")
+    }
+  } catch (error) {
+    req.flash("notice", "Sorry, the deletion failed. Make sure the classification is empty or check the 'Delete Vehicles' option.")
+    res.redirect("/inv/delete-classification")
+  }
+}
+
 module.exports = invCont

@@ -72,4 +72,20 @@ router.post(
   utilities.handleErrors(invController.deleteInventory)
 )
 
+// Delete-Classification View route
+router.get('/delete-classification', 
+  utilities.checkLogin,
+  utilities.checkAccountType("Employee", "Admin"),
+  utilities.handleErrors(invController.buildDeleteClassificationView)
+)
+
+// Route to process the classification delete
+router.post('/delete-classification',
+  utilities.checkLogin,
+  utilities.checkAccountType("Employee", "Admin"),
+  validate.classificationDeletionRules(),
+  validate.checkClassificationDeletionData,
+  utilities.handleErrors(invController.deleteClassification)
+)
+
 module.exports = router;

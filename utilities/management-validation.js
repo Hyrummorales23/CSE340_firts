@@ -132,4 +132,37 @@ validate.checkUpdateData = async (req, res, next) => {
   next()
 }
 
+/* ****************************************
+ * Classification Deletion Validation Rules
+ * *************************************** */
+validate.classificationDeletionRules = () => {
+  return [
+    body("classification_id")
+      .notEmpty()
+      .withMessage("Please select a classification to delete")
+      .isInt()
+      .withMessage("Invalid classification selection")
+  ]
+}
+
+/* ****************************************
+ * Check classification deletion data
+ * *************************************** */
+validate.checkClassificationDeletionData = async (req, res, next) => {
+  const errors = validationResult(req)
+  
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    const classifications = await invModel.getClassifications()
+    
+    return res.render("inventory/delete-classification", {
+      title: "Delete Classification",
+      nav,
+      errors: errors.array(),
+      classifications: classifications.rows
+    })
+  }
+  next()
+}
+
 module.exports = validate
