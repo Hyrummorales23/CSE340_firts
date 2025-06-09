@@ -248,3 +248,33 @@ WHERE inv_make = 'GM'
 UPDATE public.inventory
 SET inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/'),
     inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/');
+
+-- Create Happy Employee account (with hashed password)
+INSERT INTO account (
+    account_firstname, 
+    account_lastname, 
+    account_email, 
+    account_password, 
+    account_type
+) VALUES (
+    'Happy',
+    'Employee',
+    'happy@340.edu',
+    '$2a$10$N9qo8uLOickgx2ZMRZoMy.Mrq5QrB1lBQ/3/.K.D9L5Z6f6Y0zQdO', -- I@mAnEmpl0y33 hashed
+    'Employee'
+);
+
+-- Create Manager User account (with hashed password)
+INSERT INTO account (
+    account_firstname, 
+    account_lastname, 
+    account_email, 
+    account_password, 
+    account_type
+) VALUES (
+    'Manager',
+    'User',
+    'manager@340.edu',
+    '$2a$10$8R3yKfIQS8T4mN0pD5SJv.5vGZQ1hT9WUuJ9fL5vX1Y2W3Z4Y5z6A7', -- I@mAnAdm!n1strat0r hashed
+    'Admin'
+);
